@@ -3,4 +3,6 @@
     <string name="post_error">An error occurred while loading the users</string>
     <string name="app_name">People!</string>
     <string name="avatarUser">avatar</string>
+    <string name="label_username">Username:</string>
+    <string name="label_email">Email:</string>
 </resources>
