@@ -12,7 +12,7 @@ class UserDetailViewModel: BaseViewModel() {
 
     fun bind(user: User){
         largeImageUser.value = user.picture.large
-        nameUser.value = user.name.first+" "+user.name.last
+        nameUser.value = (user.name.title+" "+user.name.first+" "+user.name.last).toUpperCase()
         username.value = user.login.username
         email.value = user.email
     }

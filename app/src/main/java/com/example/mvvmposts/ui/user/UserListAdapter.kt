@@ -48,11 +48,13 @@ class UserListAdapter : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
             binding.userCard.setOnClickListener{
                 Log.d("Debug", "estoy dando click")
                 val intent=Intent(context, UserDetailActivity::class.java)
-                Log.e("object intent", intent.toString())
-                val bundle = intent.extras
+                intent.putExtra("user", user)
+               /* Log.e("object intent", intent.toString())
+                Log.e("object extras", intent.extras.toString())
+                val bundle: Bundle? = intent.extras
                 Log.e("Object bundle", bundle.toString())
                 bundle!!.putSerializable("user",user)
-                intent.putExtras(bundle)
+                intent.putExtras*/
                 context.startActivity(intent)
             }
         }
