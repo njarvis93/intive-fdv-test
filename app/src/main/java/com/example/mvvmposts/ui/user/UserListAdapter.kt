@@ -1,26 +1,28 @@
 package com.example.mvvmposts.ui.user
 
 import android.content.Context
+import android.content.Intent
+import android.os.Build
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmposts.R
 import com.example.mvvmposts.databinding.ItemUserBinding
 import com.example.mvvmposts.model.User
-import java.math.MathContext
+import java.io.Serializable
 
-class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
+class UserListAdapter : RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
     private lateinit var userList:List<User>
-    private lateinit var context:Context
+    private lateinit var activity:Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserListAdapter.ViewHolder {
         val binding: ItemUserBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.context), R.layout.item_user, parent, false)
-        context = parent.context
-        return ViewHolder(binding)
+        activity = parent.context
+        return ViewHolder(binding, activity)
     }
 
     override fun onBindViewHolder(holder: UserListAdapter.ViewHolder, position: Int) {
@@ -37,18 +39,25 @@ class UserListAdapter: RecyclerView.Adapter<UserListAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    public val onClickListenerCardView : OnClickListener = OnClickListener { view ->
-        Log.d("Debug", "estoy dando click")
-    }
+    inner class ViewHolder(private val binding: ItemUserBinding,private val context: Context): RecyclerView.ViewHolder(binding.root){
 
-
-    class ViewHolder(private val binding: ItemUserBinding): RecyclerView.ViewHolder(binding.root){
         private val viewModel = UserViewModel()
-
         fun bind(user:User){
             viewModel.bind(user)
             binding.viewModel = viewModel
-            binding.userCard.setOnClickListener{  }
+            binding.userCard.setOnClickListener{
+                Log.d("Debug", "estoy dando click")
+                val intent=Intent(context, UserDetailActivity::class.java)
+                Log.e("object intent", intent.toString())
+                val bundle = intent.extras
+                Log.e("Object bundle", bundle.toString())
+                bundle!!.putSerializable("user",user)
+                intent.putExtras(bundle)
+                context.startActivity(intent)
+            }
         }
+
+
     }
+
 }

@@ -9,14 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mvvmposts.utils.extension.getParentActivity
-import android.graphics.BitmapFactory
-import android.graphics.Bitmap
-import java.net.URL
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.Glide
-
-
-
 
 @BindingAdapter("adapter")
 fun setAdapter(view: RecyclerView, adapter: RecyclerView.Adapter<*>) {

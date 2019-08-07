@@ -1,5 +1,7 @@
 package com.example.mvvmposts.model
 
+import java.io.Serializable
+
 data class User (
     val gender : String,
     val name : Name,
@@ -13,4 +15,4 @@ data class User (
     val id : Id,
     val picture : Picture,
     val nat : String
-)
+): Serializable

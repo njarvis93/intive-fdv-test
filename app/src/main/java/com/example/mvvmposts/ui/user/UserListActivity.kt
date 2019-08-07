@@ -2,6 +2,7 @@ package com.example.mvvmposts.ui.user
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,9 +11,10 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.mvvmposts.R
 import com.example.mvvmposts.databinding.ActivityUserListBinding
+import com.example.mvvmposts.model.User
 import com.google.android.material.snackbar.Snackbar
 
-class UserListActivity: AppCompatActivity() {
+class UserListActivity: AppCompatActivity(){
     private lateinit var binding: ActivityUserListBinding
     private lateinit var viewModel: UserListViewModel
     private var errorSnackbar: Snackbar? = null
@@ -40,4 +42,5 @@ class UserListActivity: AppCompatActivity() {
     private fun hideError(){
         errorSnackbar?.dismiss()
     }
+
 }

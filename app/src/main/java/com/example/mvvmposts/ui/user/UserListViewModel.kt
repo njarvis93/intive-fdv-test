@@ -62,4 +62,5 @@ class UserListViewModel:BaseViewModel() {
         super.onCleared()
         subscription.dispose()
     }
+
 }
